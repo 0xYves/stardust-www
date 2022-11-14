@@ -29,8 +29,8 @@ const usePool = () => {
   // const { data: createData, write: create } = useContractWrite(config)
 
   const { data: numBorrows } = useContractRead({
-    address,
-    abi: PoolABI.abi,
+    addressOrName: address,
+    contractInterface: PoolABI.abi,
     functionName: 'numBorrows',
   })
 
