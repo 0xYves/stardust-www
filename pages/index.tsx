@@ -1,27 +1,55 @@
 import {
-  Row,
   Button,
   Card,
   Container,
   Input,
   Modal,
-  Text,
   Navbar,
+  Row,
+  Text,
 } from '@nextui-org/react'
-import { useState } from 'react'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
+import { ethers } from 'ethers'
+import { useState } from 'react'
+import { useContractWrite, usePrepareContractWrite } from 'wagmi'
+import PoolABI from '../contracts/abi/Pool.json'
 import usePool from './hooks/usePool'
 
+const address = '0x92D433526ab0112Caa640E0202C26C8A172b1f17'
+const goerliETH = '0x05d314c474C54D085B14b59D76E5AbD141De0191'
+const goerliUSDC = '0x2f3A40A3db8a7e3D09B0adfEfbCe4f6F81927557'
+const goerliDAI = '0x73967c6a0904aA032C103b4104747E88c566B1A2'
+const oneWeek = 604800016
+
 export default function Home() {
+  const { config } = usePrepareContractWrite({
+    address,
+    abi: PoolABI.abi,
+    functionName: 'create',
+    args: [
+      goerliETH,
+      ethers.BigNumber.from('1'),
+      ethers.BigNumber.from('1'),
+      ethers.BigNumber.from('1'),
+    ],
+  })
+
+  const { data: createData, write: create } = useContractWrite(config)
   const [visible, setVisible] = useState(false)
+
+  // if (!create) return
+
+  const handleCreate = () => {
+    // create()
+  }
 
   const handleOpen = () => setVisible(true)
 
   const handleClose = () => {
     setVisible(false)
   }
-  const { data } = usePool()
-  console.log('🚀 ~ Home ~ data', data)
+  const { numBorrows } = usePool()
+  console.log('🚀 ~ Home ~ numBorrows', numBorrows)
   return (
     <>
       <Navbar isBordered>
@@ -80,7 +108,7 @@ export default function Home() {
               DAI
             </Button>
           </Row>
-          <Button color="gradient" auto>
+          <Button auto color="gradient" onClick={handleCreate}>
             Create Order
           </Button>
         </Card>
