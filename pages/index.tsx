@@ -12,8 +12,10 @@ import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { ethers } from 'ethers'
 import { useState } from 'react'
 import { useContractWrite, usePrepareContractWrite } from 'wagmi'
+import OffersTable from '../components/OffersTable'
 import PoolABI from '../contracts/abi/Pool.json'
 import usePool from './hooks/usePool'
+import Layout from '../components/Layout'
 
 const address = '0x92D433526ab0112Caa640E0202C26C8A172b1f17'
 const goerliETH = '0x05d314c474C54D085B14b59D76E5AbD141De0191'
@@ -52,24 +54,6 @@ export default function Home() {
   console.log('🚀 ~ Home ~ numBorrows', numBorrows)
   return (
     <>
-      <Navbar isBordered>
-        <Navbar.Brand>
-          <Text b color="inherit" hideIn="xs">
-            STARDUST
-          </Text>
-        </Navbar.Brand>
-        <Navbar.Content hideIn="xs">
-          <Navbar.Link isActive href="#">
-            Borrow
-          </Navbar.Link>
-          <Navbar.Link href="#">Lend</Navbar.Link>
-        </Navbar.Content>
-        <Navbar.Content>
-          <Navbar.Item>
-            <ConnectButton />
-          </Navbar.Item>
-        </Navbar.Content>
-      </Navbar>
       <Container
         css={{
           alignItems: 'center',
