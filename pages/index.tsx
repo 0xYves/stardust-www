@@ -30,13 +30,30 @@ export default function Home() {
     functionName: 'create',
     args: [
       goerliETH,
-      ethers.BigNumber.from('1'),
-      ethers.BigNumber.from('1'),
+      ethers.BigNumber.from('1000000000000000000'),
+      ethers.BigNumber.from('1000000000000000000'),
       ethers.BigNumber.from('1'),
     ],
   })
 
+  //@ts-ignore
   const { data: createData, write: create } = useContractWrite(config)
+
+  // TODO: check works on goerli then remove
+  // const { config } = usePrepareContractWrite({
+  //   addressOrName: '0xFBA3912Ca04dd458c843e2EE08967fC04f3579c2',
+  //   contractInterface: [
+  //     {
+  //       name: 'mint',
+  //       type: 'function',
+  //       stateMutability: 'nonpayable',
+  //       inputs: [{ internalType: 'uint32', name: 'tokenId', type: 'uint32' }],
+  //       outputs: [],
+  //     },
+  //   ],
+  //   functionName: 'mint',
+  //   args: [parseInt('1')],
+  // })
   const [visible, setVisible] = useState(false)
 
   // if (!create) return

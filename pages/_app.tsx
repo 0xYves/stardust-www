@@ -13,6 +13,7 @@ import { createTheme } from '@nextui-org/react'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
 import { Karla } from '@next/font/google'
 import Layout from '../components/Layout'
+import { alchemyProvider } from 'wagmi/providers/alchemy'
 
 const karla = Karla({
   weight: '400',
@@ -27,9 +28,9 @@ const theme = createTheme({
 })
 
 const { chains, provider } = configureChains(
-  [chain.goerli],
+  [chain.goerli, chain.mainnet],
   [
-    // alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
+    alchemyProvider({ apiKey: 's0DQdQzcEu3bCDiTJmVE6cQMYkU8KcAw' }),
     publicProvider(),
   ],
 )
