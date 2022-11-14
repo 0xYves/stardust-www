@@ -1,23 +1,22 @@
-import { Table } from "@nextui-org/react";
-import React from "react";
+import { Table } from "@nextui-org/react"
 
 type AssetType = {
-  name?: string;
-  logo?: string;
+  name: string;
+  logo: string;
 };
 
-type row = {
+type Row = {
   asset: AssetType;
-  apy: number;
-  ltv: number;
-  borrowAmount: string;
-  collateralAmount: string;
-  duration: string;
-  status: string;
-  borrower: string;
+  apy: number
+  ltv: number
+  borrowAmount: string
+  collateralAmount: string
+  duration: string
+  status: string
+  borrower: string
 };
 
-const rows: row[] = [
+const rows: Row[] = [
   {
     asset: { name: "convex", logo: "www.image.com" },
     apy: 10,
@@ -38,7 +37,7 @@ const rows: row[] = [
     status: "Active",
     borrower: "0xmoalo",
   },
-];
+]
 
 export default function OffersTable() {
   return (

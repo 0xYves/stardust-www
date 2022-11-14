@@ -1,6 +1,7 @@
 import { Karla } from '@next/font/google'
 import { Navbar, Text } from '@nextui-org/react'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
+import Link from 'next/link'
 
 const karla = Karla({
   weight: '400',
@@ -19,9 +20,15 @@ export default function Layout({ children }) {
         </Navbar.Brand>
         <Navbar.Content hideIn="xs">
           <Navbar.Link isActive href="/">
-            Borrow
+            <Link href='/'>
+              Borrow
+            </Link>
           </Navbar.Link>
-          <Navbar.Link href="/lend">Lend</Navbar.Link>
+          <Navbar.Link href="/lend">
+            <Link href='/lend'>
+              Lend
+            </Link>
+            </Navbar.Link>
         </Navbar.Content>
         <Navbar.Content>
           <Navbar.Item>
