@@ -1,52 +1,52 @@
-import { Table } from "@nextui-org/react";
-import React from "react";
+import { Table } from '@nextui-org/react'
+import React from 'react'
 
 type AssetType = {
-  name?: string;
-  logo?: string;
-};
+  name?: string
+  logo?: string
+}
 
 type row = {
-  asset: AssetType;
-  apy: number;
-  ltv: number;
-  borrowAmount: string;
-  collateralAmount: string;
-  duration: string;
-  status: string;
-  borrower: string;
-};
+  asset: AssetType
+  apy: number
+  ltv: number
+  borrowAmount: string
+  collateralAmount: string
+  duration: string
+  status: string
+  borrower: string
+}
 
 const rows: row[] = [
   {
-    asset: { name: "convex", logo: "www.image.com" },
+    asset: { name: 'convex', logo: 'www.image.com' },
     apy: 10,
     ltv: 0.5,
-    borrowAmount: "10000",
-    collateralAmount: "100 ($200)",
-    duration: "2 weeks",
-    status: "Active",
-    borrower: "0xmoalo",
+    borrowAmount: '10000',
+    collateralAmount: '100 ($200)',
+    duration: '2 weeks',
+    status: 'Active',
+    borrower: '0xmoalo',
   },
   {
-    asset: { name: "convex", logo: "www.image.com" },
+    asset: { name: 'convex', logo: 'www.image.com' },
     apy: 10,
     ltv: 0.5,
-    borrowAmount: "10000",
-    collateralAmount: "100 ($200)",
-    duration: "2 weeks",
-    status: "Active",
-    borrower: "0xmoalo",
+    borrowAmount: '10000',
+    collateralAmount: '100 ($200)',
+    duration: '2 weeks',
+    status: 'Active',
+    borrower: '0xmoalo',
   },
-];
+]
 
 export default function OffersTable() {
   return (
     <Table
       aria-label="Example static collection table"
       css={{
-        height: "auto",
-        minWidth: "100%",
+        height: 'auto',
+        minWidth: '100%',
       }}
       selectionMode="single"
     >
@@ -73,9 +73,9 @@ export default function OffersTable() {
               <Table.Cell>{row.status}</Table.Cell>
               <Table.Cell>{row.borrower}</Table.Cell>
             </Table.Row>
-          );
+          )
         })}
       </Table.Body>
     </Table>
-  );
+  )
 }

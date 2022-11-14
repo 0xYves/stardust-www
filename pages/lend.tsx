@@ -3,7 +3,6 @@ import OffersTable from '../components/OffersTable'
 
 export default function Lend() {
   return (
-    
     <Container
       css={{
         alignItems: 'center',
