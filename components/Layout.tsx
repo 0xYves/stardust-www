@@ -1,5 +1,11 @@
+import { Karla } from '@next/font/google'
 import { Navbar, Text } from '@nextui-org/react'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
+
+const karla = Karla({
+  weight: '400',
+  subsets: ['latin'],
+})
 
 // @ts-ignore
 export default function Layout({ children }) {
@@ -23,7 +29,7 @@ export default function Layout({ children }) {
           </Navbar.Item>
         </Navbar.Content>
       </Navbar>
-      <main>{children}</main>
+      <main className={karla.className}>{children}</main>
     </>
   )
 }
