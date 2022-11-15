@@ -8,8 +8,7 @@ const karla = Karla({
   subsets: ['latin'],
 })
 
-// @ts-ignore
-export default function Layout({ children }) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Navbar isBordered>
@@ -19,14 +18,14 @@ export default function Layout({ children }) {
           </Text>
         </Navbar.Brand>
         <Navbar.Content hideIn="xs">
-          <Navbar.Link isActive href="/">
-            <Link href="/">Borrow</Link>
+          <Navbar.Link as={Link} isActive href="/">
+            Borrow
           </Navbar.Link>
-          <Navbar.Link href="/lend">
-            <Link href="/lend">Lend</Link>
+          <Navbar.Link as={Link} href="/lend">
+            Lend
           </Navbar.Link>
-          <Navbar.Link href="/dashboard">
-            <Link href="/dashboard">Dashboard</Link>
+          <Navbar.Link as={Link} href="/dashboard">
+            Dashboard
           </Navbar.Link>
         </Navbar.Content>
         <Navbar.Content>

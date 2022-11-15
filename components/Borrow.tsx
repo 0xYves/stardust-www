@@ -8,6 +8,12 @@ import TokenModal from '../modals/TokenModal'
 import usePool from '../pages/hooks/usePool'
 
 export default function Borrow() {
+  const [visible, setVisible] = useState(false)
+  // const { allPositions, borrows, numBorrows, owner, positions, positionIds } =
+  const { allPositions } = usePool()
+  console.log('🚀 ~ Borrow ~ allPositions', allPositions)
+
+  // Pool: create()
   const { config } = usePrepareContractWrite({
     address,
     abi: PoolABI.abi,
@@ -18,12 +24,11 @@ export default function Borrow() {
       ethers.utils.parseUnits('100', 6),
       ethers.constants.MaxUint256,
     ],
+    enabled: false,
   })
-
   const { data: createData, write: create } = useContractWrite(config)
-  const [visible, setVisible] = useState(false)
 
-  // if (!create) return
+  if (!create) return
 
   const handleCreate = () => {
     if (!create) return
@@ -31,13 +36,9 @@ export default function Borrow() {
   }
 
   const handleOpen = () => setVisible(true)
-
   const handleClose = () => {
     setVisible(false)
   }
-  // const { allPositions, borrows, numBorrows, owner, positions, positionIds } =
-  const { allPositions } = usePool()
-  console.log('🚀 ~ Borrow ~ allPositions', allPositions)
 
   return (
     <>
