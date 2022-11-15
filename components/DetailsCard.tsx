@@ -36,7 +36,7 @@ const DetailsCard = (props: Props) => {
           <Text size={24} weight="bold">
             1,500,000 USDC
           </Text>
-          <Text color="#EBEBF599" css={{ opacity: 0.3 }}>
+          <Text color="#EBEBF599" css={{ opacity: 0.6 }}>
             in collateral
           </Text>
         </div>
