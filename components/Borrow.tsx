@@ -1,37 +1,49 @@
 import { Button, Card, Container, Input, Row } from '@nextui-org/react'
-import { useContractWrite, usePrepareContractWrite } from 'wagmi'
-import PoolABI from '../contracts/abi/Pool.json'
 import { ethers } from 'ethers'
 import { useState } from 'react'
-import usePool from '../pages/hooks/usePool'
+import { useContractWrite, usePrepareContractWrite } from 'wagmi'
+import PoolABI from '../contracts/abi/Pool.json'
 import TokenModal from '../modals/TokenModal'
+import usePool from '../pages/hooks/usePool'
 
 const address = '0x92D433526ab0112Caa640E0202C26C8A172b1f17'
 const goerliETH = '0x05d314c474C54D085B14b59D76E5AbD141De0191'
-const goerliUSDC = '0x2f3A40A3db8a7e3D09B0adfEfbCe4f6F81927557'
+const goerliUSDC = '0xD87Ba7A50B2E7E660f678A895E4B72E7CB4CCd9C'
 const goerliDAI = '0x73967c6a0904aA032C103b4104747E88c566B1A2'
 const oneWeek = 604800016
 
 export default function Borrow() {
-  const { config } = usePrepareContractWrite({
-    address,
-    abi: PoolABI.abi,
-    functionName: 'create',
-    args: [
-      goerliETH,
-      ethers.BigNumber.from('1'),
-      ethers.BigNumber.from('1'),
-      ethers.BigNumber.from('1'),
-    ],
-  })
+  // const { config } = usePrepareContractWrite({
+  //   address,
+  //   abi: PoolABI.abi,
+  //   functionName: 'create',
+  //   args: [
+  //     goerliUSDC,
+  //     ethers.utils.parseUnits('1.0', 6),
+  //     ethers.utils.parseUnits('1.0', 6),
+  //     ethers.constants.MaxUint256,
+  //   ],
+  // })
 
-  const { data: createData, write: create } = useContractWrite(config)
+  // const { data: createData, write: create } = useContractWrite(config)
   const [visible, setVisible] = useState(false)
+
+  // const { config } = usePrepareContractWrite({
+  //   address: goerliUSDC,
+  //   abi: ERC20ABI.abi,
+  //   functionName: 'approve',
+  //   args: [address, ethers.constants.MaxUint256],
+  // })
+
+  // const { data: createData, write: approve } = useContractWrite(config)
 
   // if (!create) return
 
   const handleCreate = () => {
-    // create()
+    // if (!approve) return
+    if (!create) return
+    create()
+    // approve()
   }
 
   const handleOpen = () => setVisible(true)
@@ -39,8 +51,12 @@ export default function Borrow() {
   const handleClose = () => {
     setVisible(false)
   }
-  const { numBorrows } = usePool()
-  console.log('🚀 ~ Home ~ numBorrows', numBorrows)
+  const { borrows, numBorrows, owner, positions, positionIds } = usePool()
+  console.log('🚀 ~ Borrow ~ owner', owner)
+  console.log('🚀 ~ Borrow ~ borrows', borrows)
+  console.log('🚀 ~ Borrow ~ positions', positions)
+  console.log('🚀 ~ Borrow ~ numBorrows', numBorrows)
+  console.log('🚀 ~ Borrow ~ positionIds', positionIds)
 
   return (
     <>
