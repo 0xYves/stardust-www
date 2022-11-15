@@ -20,15 +20,14 @@ export default function Layout({ children }) {
         </Navbar.Brand>
         <Navbar.Content hideIn="xs">
           <Navbar.Link isActive href="/">
-            <Link href='/'>
-              Borrow
-            </Link>
+            <Link href="/">Borrow</Link>
           </Navbar.Link>
           <Navbar.Link href="/lend">
-            <Link href='/lend'>
-              Lend
-            </Link>
-            </Navbar.Link>
+            <Link href="/lend">Lend</Link>
+          </Navbar.Link>
+          <Navbar.Link href="/dashboard">
+            <Link href="/dashboard">Dashboard</Link>
+          </Navbar.Link>
         </Navbar.Content>
         <Navbar.Content>
           <Navbar.Item>

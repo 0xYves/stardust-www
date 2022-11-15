@@ -40,7 +40,7 @@ const rows: row[] = [
   },
 ]
 
-export default function OffersTable() {
+export default function MyLoansTable() {
   return (
     <Table
       aria-label="Example static collection table"
@@ -59,7 +59,6 @@ export default function OffersTable() {
         <Table.Column>Duration</Table.Column>
         <Table.Column>Status</Table.Column>
         <Table.Column>Borrower</Table.Column>
-        <Table.Column hideHeader={true}>Button</Table.Column>
       </Table.Header>
       <Table.Body>
         {rows.map((row, i) => {
@@ -73,11 +72,6 @@ export default function OffersTable() {
               <Table.Cell>{row.duration}</Table.Cell>
               <Table.Cell>{row.status}</Table.Cell>
               <Table.Cell>{row.borrower}</Table.Cell>
-              <Table.Cell>
-                <Button color="primary" auto>
-                  Fill
-                </Button>
-              </Table.Cell>
             </Table.Row>
           )
         })}
