@@ -1,63 +1,43 @@
-import { BigNumber } from 'ethers'
-import { useState } from 'react'
+import { ethers } from 'ethers'
 import { useContractRead } from 'wagmi'
-import { useContractWrite, usePrepareContractWrite } from 'wagmi'
-
-// function App() {
-//  return (
-//  <div>
-//  <button disabled={!write} onClick={() => write?.()}>
-//  Feed
-//  </button>
-//  {isLoading && <div>Check Wallet</div>}
-//  {isSuccess && <div>Transaction: {JSON.stringify(data)}</div>}
-//  </div>
-//  )
-// }
-
 import PoolABI from '../../contracts/abi/Pool.json'
+
 const address = '0x92D433526ab0112Caa640E0202C26C8A172b1f17'
 
 const usePool = () => {
-  const [data, setData] = useState<BigNumber>()
-  // const { config } = usePrepareContractWrite({
-  //   address,
-  //   abi: PoolABI.abi,
-  //   functionName: 'create',
-  // })
-
-  // const { data: createData, write: create } = useContractWrite(config)
+  const { data: borrows } = useContractRead({
+    address,
+    abi: PoolABI.abi,
+    functionName: 'borrows',
+  })
 
   const { data: numBorrows } = useContractRead({
-    addressOrName: address,
-    contractInterface: PoolABI.abi,
+    address,
+    abi: PoolABI.abi,
     functionName: 'numBorrows',
   })
 
-  // const handleCreate = ({
-  //   token,
-  //   amount,
-  //   borrowAmount,
-  //   expiry,
-  // }: {
-  //   token: string
-  //   amount: number
-  //   borrowAmount: number
-  //   expiry: number
-  // }) => {
-  //   // TODO: check decimals
-  //   if (!create) return
-  //   const formattedAmount = BigNumber.from(amount).mul(
-  //     BigNumber.from(10).pow(18),
-  //   )
-  //   const formattedBorrowAmount = BigNumber.from(borrowAmount).mul(
-  //     BigNumber.from(10).pow(18),
-  //   )
+  const { data: owner } = useContractRead({
+    address,
+    abi: PoolABI.abi,
+    functionName: 'owner',
+  })
 
-  //   create(token, formattedAmount, formattedBorrowAmount, expiry)
-  // }
+  const { data: positionIds } = useContractRead({
+    address,
+    abi: PoolABI.abi,
+    functionName: 'positionIds',
+    args: [ethers.BigNumber.from(0)],
+  })
 
-  return { numBorrows }
+  const { data: positions } = useContractRead({
+    address,
+    abi: PoolABI.abi,
+    functionName: 'positions',
+    args: [positionIds],
+  })
+
+  return { borrows, numBorrows, owner, positions, positionIds }
 }
 
 export default usePool
