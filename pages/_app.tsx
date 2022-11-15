@@ -1,8 +1,10 @@
+import '@fontsource/karla/400.css'
+import '@fontsource/karla/700.css'
 import { createTheme, NextUIProvider } from '@nextui-org/react'
 import {
   darkTheme,
   getDefaultWallets,
-  RainbowKitProvider
+  RainbowKitProvider,
 } from '@rainbow-me/rainbowkit'
 import '@rainbow-me/rainbowkit/styles.css'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
@@ -15,15 +17,17 @@ import '../styles/globals.css'
 const theme = createTheme({
   type: 'dark',
   theme: {
-    fonts: {},
+    colors: {
+      primary: '#5E5CE6',
+      primaryBackground: '#1C1C1E',
+    },
+    fonts: { sans: 'Karla' },
   },
 })
 
 const { chains, provider } = configureChains(
   [chain.goerli, chain.mainnet],
-  [
-    publicProvider(),
-  ],
+  [publicProvider()],
 )
 const { connectors } = getDefaultWallets({
   appName: 'stardust',

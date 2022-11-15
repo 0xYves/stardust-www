@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fontsource/karla": "^4.5.10",
     "@next/font": "^13.0.3",
     "@nextui-org/react": "^1.0.0-beta.10",
     "@rainbow-me/rainbowkit": "^0.7.4",
