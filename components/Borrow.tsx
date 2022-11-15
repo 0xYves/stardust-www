@@ -28,7 +28,7 @@ export default function Borrow() {
   })
   const { data: createData, write: create } = useContractWrite(config)
 
-  if (!create) return
+  /*  if (!create) return*/
 
   const handleCreate = () => {
     if (!create) return
@@ -80,7 +80,13 @@ export default function Borrow() {
               DAI
             </Button>
           </Row>
-          <Button auto color="gradient" onClick={handleCreate}>
+          <Button
+            auto
+            color="gradient"
+            onClick={() => {
+              handleCreate
+            }}
+          >
             Create Order
           </Button>
         </Card>
