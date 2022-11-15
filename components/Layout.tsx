@@ -11,8 +11,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             STARDUST
           </Text>
         </Navbar.Brand>
-        <Navbar.Content activeColor="primary" hideIn="xs" variant="highlight">
-          <Navbar.Link as={Link} isActive href="/dashboard">
+        <Navbar.Content hideIn="xs" variant="highlight">
+          <Navbar.Link as={Link} href="/dashboard">
             Dashboard
           </Navbar.Link>
           <Navbar.Link as={Link} href="/explore">

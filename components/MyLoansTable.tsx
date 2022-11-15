@@ -1,23 +1,7 @@
 import { Button, Table } from '@nextui-org/react'
-import React from 'react'
+import { Row } from '../constants'
 
-type AssetType = {
-  name?: string
-  logo?: string
-}
-
-type row = {
-  asset: AssetType
-  apy: number
-  ltv: number
-  borrowAmount: string
-  collateralAmount: string
-  duration: string
-  status: string
-  borrower: string
-}
-
-const rows: row[] = [
+const rows: Row[] = [
   {
     asset: { name: 'convex', logo: 'www.image.com' },
     apy: 10,
@@ -43,12 +27,11 @@ const rows: row[] = [
 export default function MyLoansTable() {
   return (
     <Table
-      aria-label="Example static collection table"
       css={{
         height: 'auto',
         minWidth: '100%',
+        backgroundColor: '$primaryBackground',
       }}
-      selectionMode="none"
     >
       <Table.Header>
         <Table.Column>Asset Name</Table.Column>
@@ -59,6 +42,9 @@ export default function MyLoansTable() {
         <Table.Column>Duration</Table.Column>
         <Table.Column>Status</Table.Column>
         <Table.Column>Borrower</Table.Column>
+        <Table.Column>
+          <></>
+        </Table.Column>
       </Table.Header>
       <Table.Body>
         {rows.map((row, i) => {
@@ -72,6 +58,9 @@ export default function MyLoansTable() {
               <Table.Cell>{row.duration}</Table.Cell>
               <Table.Cell>{row.status}</Table.Cell>
               <Table.Cell>{row.borrower}</Table.Cell>
+              <Table.Cell>
+                <Button size="xs">Fill</Button>
+              </Table.Cell>
             </Table.Row>
           )
         })}

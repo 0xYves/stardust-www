@@ -15,3 +15,18 @@ export interface Loan {
   startTime: string
   expiryTime: string
 }
+export type AssetType = {
+  name?: string
+  logo?: string
+}
+
+export type Row = {
+  asset: AssetType
+  apy: number
+  ltv: number
+  borrowAmount: string
+  collateralAmount: string
+  duration: string
+  status: string
+  borrower: string
+}
