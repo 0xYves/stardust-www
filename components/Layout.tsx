@@ -12,7 +12,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </Text>
         </Navbar.Brand>
         <Navbar.Content hideIn="xs" variant="highlight">
-          <Navbar.Link as={Link} href="/dashboard">
+          <Navbar.Link as={Link} href="/">
             Dashboard
           </Navbar.Link>
           <Navbar.Link as={Link} href="/explore">
